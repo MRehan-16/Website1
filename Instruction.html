@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FutureLens Quiz Intro</title>
+
+  <style>
+
+
+
+/* ========== RESET & BASE ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+}
+body {
+  font-family: Inter, system-ui, sans-serif;
+  background: #0e0e0e;
+  color: #fff;
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background 0.6s ease, color 0.6s ease;
+}
+body.light-mode {
+  background: #f5f5f5;
+  color: #222;
+}
+
+/* ========== NAVBAR ========== */
+nav {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  transition: background 0.6s ease;
+}
+body.light-mode nav {
+  background: rgba(255,255,255,0.7);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #00bfff;
+  transition: color 0.4s ease, text-shadow 0.4s ease;
+}
+.logo:hover {
+  color: #1ecfff;
+  text-shadow: 0 0 18px rgba(0,191,255,0.6);
+}
+body.light-mode .logo { color: #0099cc; }
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.join-btn, .toggle-btn {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.6s ease, background 0.6s ease, color 0.6s ease;
+  border: none;
+}
+.join-btn {
+  background: transparent;
+  border: 1px solid #00bfff;
+  color: #00bfff;
+}
+.join-btn:hover {
+  background: #00bfff;
+  color: #fff;
+}
+body.light-mode .join-btn {
+  border-color: #0099cc;
+  color: #0099cc;
+}
+body.light-mode .join-btn:hover {
+  background: #0099cc;
+  color: #fff;
+}
+
+.toggle-btn {
+  background: linear-gradient(45deg, #00bfff, #0099cc);
+  color: #fff;
+}
+.toggle-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0,191,255,0.6);
+}
+body.light-mode .toggle-btn {
+  background: linear-gradient(45deg, #0099cc, #00bfff);
+}
+
+/* ========== HERO / INTRO SECTION ========== */
+.quiz-intro {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 24px 60px;
+  background: linear-gradient(135deg, #0f0f0f, #111, #0a0a0a);
+  overflow: hidden;
+}
+body.light-mode .quiz-intro {
+  background: linear-gradient(135deg, #f5f5f5, #eaeaea);
+}
+
+.quiz-intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(0,191,255,0.15), transparent 70%);
+  animation: pulseBg 6s infinite alternate;
+  z-index: 0;
+}
+@keyframes pulseBg {
+  from { opacity: 0.3; transform: scale(1); }
+  to   { opacity: 0.6; transform: scale(1.1); }
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  text-align: center;
+}
+.content h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #00bfff;
+  margin-bottom: 24px;
+  text-shadow: 0 0 20px rgba(0,191,255,0.3);
+  transition: color 0.6s ease;
+}
+body.light-mode .content h1 { color: #0099cc; }
+
+.content .description {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 40px;
+  line-height: 1.8;
+  transition: color 0.6s ease;
+}
+
+.start-btn {
+  padding: 14px 34px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(45deg, #00bfff, #0099cc);
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.6s ease, background 0.6s ease, color 0.6s ease;
+}
+.start-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 22px rgba(0,191,255,0.55);
+}
+.start-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 12px rgba(0,191,255,0.4) inset;
+}
+body.light-mode .start-btn {
+  background: linear-gradient(45deg, #0099cc, #00bfff);
+}
+
+/* ========== SCROLL FADE-IN ========== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px 20px;
+  }
+  .nav-actions {
+    margin-top: 10px;
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .join-btn, .toggle-btn {
+    width: 100%;
+    padding: 12px;
+  }
+  .quiz-intro {
+    padding: 80px 20px;
+  }
+  .content h1 {
+    font-size: 2.2rem;
+  }
+  .content .description {
+    font-size: 1rem;
+  }
+}
+
+  </style>
+
+
+
+</head>
+<body class="dark-mode">
+
+
+
+  <!-- Header -->
+  <nav>
+    <div class="nav-left">
+      <a onclick="window.location.href='MainHomePage.html'"><div class="logo">FutureLens</div></a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="join-btn">Join</button>
+      <button class="toggle-btn" id="modeToggle">Light Mode</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+   <div class="page-transition" id="pageWrapper">
+    <section class="quiz-intro">
+      <div class="overlay"></div>
+      <div class="content">
+        <h1>Before We Begin Your Journey</h1>
+        <p class="description">
+          You’re about to answer a few simple and easy-to-understand questions that will help us discover the career path that truly matches you.<br><br>
+          There are no right or wrong answers — just go with what feels most natural and honest to you.<br><br>
+          Your responses will guide us to find the fields that best fit your interests, strengths, and personality.
+        </p>
+        <button class="start-btn" onclick="window.location.href='quiz.html'">Start the Quiz</button>
+      </div>
+    </section>
+  </div>  
+<script>
+  const modeToggle = document.getElementById('modeToggle');
+
+  // Initialize from saved preference
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') {
+    document.body.classList.add('light-mode');
+    modeToggle.textContent = 'Dark Mode';
+  } else {
+    document.body.classList.remove('light-mode');
+    modeToggle.textContent = 'Light Mode';
+  }
+
+  // Toggle on click
+  modeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light-mode');
+    modeToggle.textContent = isLight ? 'Dark Mode' : 'Light Mode';
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  });
+</script>
+<script>
+    // Ensure fade-in on load
+    const wrapper = document.getElementById("pageWrapper");
+    wrapper.classList.remove("fade-out");
+  </script>
+
+</body>
+</html>

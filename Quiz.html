@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FutureLens Quiz</title>
+  <style>
+
+    /* Base */
+body {
+  font-family: Inter, system-ui, sans-serif;
+  background: #0f0f0f;
+  color: #fff;
+  transition: background 0.8s ease, color 0.8s ease;
+  margin: 0;
+}
+body.light-mode {
+  background: #f5f5f5;
+  color: #222;
+}
+
+/* Navbar */
+nav {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #00bfff;
+  transition: color 0.5s ease, text-shadow 0.5s ease;
+}
+.logo:hover {
+  color: #1ecfff;
+  text-shadow: 0 0 18px rgba(0,191,255,0.6);
+}
+.nav-actions {
+  display: flex;
+  gap: 12px;
+}
+.join-btn, .toggle-btn {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.join-btn {
+  background: transparent;
+  border: 1px solid #00bfff;
+  color: #00bfff;
+}
+.join-btn:hover {
+  background: #00bfff;
+  color: #fff;
+}
+.toggle-btn {
+  background: linear-gradient(45deg, #00bfff, #0099cc);
+  color: #fff;
+}
+.toggle-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0,191,255,0.6);
+}
+
+/* Quiz Section */
+.quiz-section {
+  padding-top: 120px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+#section-title {
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: #00bfff;
+  margin-bottom: 40px;
+  text-shadow: 0 0 20px rgba(0,191,255,0.3);
+  transition: color 0.8s ease;
+}
+.question {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.question.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.question h2 {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+.options {
+  display: grid;
+  gap: 16px;
+}
+.options button {
+  padding: 12px 20px;
+  border-radius: 20px;
+  border: 1px solid #00bfff;
+  background: transparent;
+  color: #00bfff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+.options button:hover {
+  background: #00bfff;
+  color: #fff;
+}
+
+/* Theme Variants for Sections */
+body.work-theme {
+  background: #1a0f2f;
+}
+body.work-theme #section-title {
+  color: #ff66cc;
+}
+body.future-theme {
+  background: #0f1a2f;
+}
+body.future-theme #section-title {
+  color: #ffcc00;
+}
+
+
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <div class="logo"><a onclick="window.location.href='MainHomePage.html'"><div class="logo">FutureLens</div></a></div>
+    <div class="nav-actions">
+      <button class="join-btn">Join</button>
+      <button class="toggle-btn" id="modeToggle">Light Mode</button>
+    </div>
+  </nav>
+
+  <!-- Quiz Container -->
+  <section class="quiz-section">
+    <h1 id="section-title">Personality Questions</h1>
+    <div id="question-container"></div>
+  </section>
+
+  <script>
+    const modeToggle = document.getElementById('modeToggle');
+modeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('light-mode');
+  modeToggle.textContent = document.body.classList.contains('light-mode') ? 'Dark Mode' : 'Light Mode';
+});
+
+// Quiz Data
+const quizData = [
+  {
+    section: "Personality Questions",
+    theme: "default",
+    questions: [
+      {
+        text: "What kind of tasks make you feel excited to start your day?",
+        options: ["Solving problems or building things", "Helping or caring for people", "Creating new ideas or designs", "Leading a team or making plans"]
+      },
+      {
+        text: "When you work on something, what do you enjoy the most?",
+        options: ["Writing or storytelling", "Experimenting or coding", "Organizing or planning", "Designing or drawing"]
+      },
+      {
+        text: "You have a free weekend. What would you rather do?",
+        options: ["Try a new DIY or tech project", "Watch documentaries or read about psychology", "Explore photography or art", "Start a mini online business"]
+      }
+    ]
+  },
+  {
+    section: "Work Preference Questions",
+    theme: "work-theme",
+    questions: [
+      {
+        text: "What kind of environment do you see yourself in?",
+        options: ["A tech office or startup", "A creative studio or media company", "A hospital or lab", "A corporate or business office"]
+      },
+      {
+        text: "Do you enjoy working with people or independently?",
+        options: ["Mostly alone", "In small teams", "With many people daily"]
+      }
+    ]
+  },
+  {
+    section: "Future Vision Questions",
+    theme: "future-theme",
+    questions: [
+      {
+        text: "Which statement fits your dream life?",
+        options: ["Build something that changes the world", "Help people live better lives", "Create or perform", "Lead my own business"]
+      },
+      {
+        text: "What kind of success would make you proud?",
+        options: ["Inventing something used worldwide", "Creating art that inspires others", "Leading a successful team or company", "Saving or improving lives"]
+      }
+    ]
+  }
+];
+
+let sectionIndex = 0;
+let questionIndex = 0;
+
+const sectionTitle = document.getElementById('section-title');
+const questionContainer = document.getElementById('question-container');
+
+function showQuestion() {
+  const section = quizData[sectionIndex];
+  const question = section.questions[questionIndex];
+
+  sectionTitle.textContent = section.section;
+  document.body.className = section.theme; // apply theme
+
+  questionContainer.innerHTML = `
+    <div class="question visible">
+      <h2>${question.text}</h2>
+      <div class="options">
+        ${question.options.map(opt => `<button>${opt}</button>`).join("")}
+      </div>
+    </div>
+  `;
+
+  document.querySelectorAll(".options button").forEach(btn => {
+    btn.addEventListener("click", () => nextQuestion());
+  });
+}
+
+function nextQuestion() {
+  questionIndex++;
+  const section = quizData[sectionIndex];
+
+  if (questionIndex >= section.questions.length) {
+    sectionIndex++;
+    questionIndex = 0;
+  }
+
+  if (sectionIndex < quizData.length) {
+    showQuestion();
+  } else {
+    questionContainer.innerHTML = `<h2>🎉 Quiz Complete! Thank you.</h2>`;
+  }
+}
+
+// Start quiz
+showQuestion();
+
+  </script>
+</body>
+</html>
