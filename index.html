@@ -4,7 +4,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FutureLens</title>
+  <meta name="google" content="notranslate">
   <style>
+
+/* For google translate widget */
+
+
+  .goog-te-banner-frame.skiptranslate,
+  .goog-te-gadget {
+    display: none !important;
+  }
+  body {
+    top: 0 !important;
+  }
+
+  /* Hide Google Translate top banner */
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+}
+
+/* Optional: remove any body top margin added by GT */
+body {
+    top: 0px !important;
+}
+
+/* Hide the inline select box (the default dropdown) */
+.goog-te-combo {
+    display: none !important;
+}
+
+
 
 /* Transition wrapper */
 .page-transition {
@@ -883,6 +912,7 @@
          position: static;
          flex-direction: column;
          margin-top: 8px;
+         margin-left : 10px
     }
 }
  
@@ -955,286 +985,358 @@ body.light-mode .feature-card h3 {
   opacity: 0.85;
 }
 
- 
 
+/* Hide by default */
+.hidden {
+  display: none;
+}
+
+/* Black box styling */
+#blackBox {
+  width: 200px;
+  height: 200px;
+  background-color: black;
+  margin-top: 20px;
+}
+
+ 
+.join-wrapper{
+  display: flex;
+  gap : 4%
+}
 
   </style>
 </head>
-<body class="has-fixed-nav">
+  <body class="has-fixed-nav">
+    
 
-  
+    
 
-  <!-- Reactive background -->
-  <div class="bg-reactive" aria-hidden="true">
-    <div class="bg-gradient" id="bgGradient"></div>
-    <div class="bg-parallax" id="bgParallax"></div>
-  </div>
-
-<!-- Navbar -->
-<nav>
-  <div class="nav-left">
-    <div class="logo">FutureLens</div>
-    <button class="hamburger" id="menuToggle">&#9776;</button>
-  </div>
-
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#features">Features</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><button class="toggle-btn" id="modeToggle">Light Mode</button></li> <!-- moved here -->
-  </ul>
-
-  <div class="nav-actions">
-    <div class="join-wrapper">
-      <button class="join-main">Join</button>
-      <div class="join-dropdown">
-        <button class="join-option">Create</button>
-        <button class="join-option">Login</button>
-      </div>
+    <!-- Reactive background -->
+    <div class="bg-reactive" aria-hidden="true">
+      <div class="bg-gradient" id="bgGradient"></div>
+      <div class="bg-parallax" id="bgParallax"></div>
     </div>
-  </div>
-</nav>
+
+  <!-- Navbar -->
+  <nav >
+    <div class="nav-left">
+      <div class="logo">FutureLens</div>
+      <button class="hamburger" id="menuToggle">&#9776;</button>
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><button class="toggle-btn" id="modeToggle">Light Mode</button></li> <!-- moved here -->
+    </ul>
+
+    <div class="nav-actions">
+      <div class="join-wrapper">
+        <div class="box1">
+            <button class="join-main">Join  Now</button>
+            
+            <div class="join-dropdown">
+              <button class="join-option">Create</button>
+              <button class="join-option">Login</button>
+            </div>
+        </div>
+        <div class="box2">
+        
+         <div id="google_translate_element" style="display:none;"></div>
+          <button  class="join-main" id="translateBtn" onclick="toggleTranslate()">Translate to Arabic</button>
+        </div>
+      </div>
+      
+
+    </div>
+    
+  </nav>
 
 
 
+    <div class="page-transition" id="pageWrapper">
+      <!-- Hero -->
+       
+      <section class="hero" id="home">
+      <h1>Discover Your Future</h1>
+      <p>Not sure what you want to do in life? FutureLens makes it easy. We help you figure out your strengths, match them with cool career paths, and show you options that actually fit your vibe — so you can stop stressing and start planning your future with confidence.</p>
+      <button class="cta" id="findPathBtn">Find My Path 🚀</button>
+
+      </section>
+    </div>
 
 
-  <div class="page-transition" id="pageWrapper">
-    <!-- Hero -->
-    <section class="hero" id="home">
-    <h1>Discover Your Future</h1>
-    <p>Not sure what you want to do in life? FutureLens makes it easy. We help you figure out your strengths, match them with cool career paths, and show you options that actually fit your vibe — so you can stop stressing and start planning your future with confidence.</p>
-    <button class="cta" id="findPathBtn">Find My Path 🚀</button>
-
+    <!-- Features -->
+    <section id="features" class="section">
+      <div class="features">
+        <div class="feature">
+          <h3>Answer a few Easy Questions</h3>
+          <p>Adaptive models map your strengths to real opportunities, tailored to your growth. Allowing you to plan for your Future .</p>
+        </div>
+        <div class="feature">
+          <h3>Our AI analyzes your strengths</h3>
+          <p>FutureLens uses smart AI to understand your personality patterns and match them with real-world career paths that fit your skills, mindset, and preferences.</p>
+        </div>
+        <div class="feature">
+          <h3>Get your top 3 career matches</h3>
+          <p>In seconds, you’ll receive three personalized career options along with a short explanation of why they fit you — so you can make confident decisions about your future.</p>
+        </div>
+      </div>
     </section>
-  </div>
 
-
-  <!-- Features -->
-  <section id="features" class="section">
-    <div class="features">
-      <div class="feature">
-        <h3>Answer a few Easy Questions</h3>
-        <p>Adaptive models map your strengths to real opportunities, tailored to your growth. Allowing you to plan for your Future .</p>
+  <section class="feature2" id="why">
+    <h2>Why FutureLens?</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="icon">🤖</div>
+        <h3>AI-powered career matching</h3>
+        <p>Smart algorithms suggest paths that fit your strengths.</p>
       </div>
-      <div class="feature">
-        <h3>Our AI analyzes your strengths</h3>
-        <p>FutureLens uses smart AI to understand your personality patterns and match them with real-world career paths that fit your skills, mindset, and preferences.</p>
+      <div class="feature-card">
+        <div class="icon">🧠</div>
+        <h3>Personalized personality insights</h3>
+        <p>Discover what makes you unique and how it guides your future.</p>
       </div>
-      <div class="feature">
-        <h3>Get your top 3 career matches</h3>
-        <p>In seconds, you’ll receive three personalized career options along with a short explanation of why they fit you — so you can make confident decisions about your future.</p>
+      <div class="feature-card">
+        <div class="icon">👩‍🎓</div>
+        <h3>Teen-friendly questions</h3>
+        <p>Simple, relatable prompts designed for young minds.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🎉</div>
+        <h3>Free to start</h3>
+        <p>Begin your journey without any cost or commitment.</p>
       </div>
     </div>
   </section>
 
-<section class="feature2" id="why">
-  <h2>Why FutureLens?</h2>
-  <div class="feature-grid">
-    <div class="feature-card">
-      <div class="icon">🤖</div>
-      <h3>AI-powered career matching</h3>
-      <p>Smart algorithms suggest paths that fit your strengths.</p>
+
+    <section class="section" id="trending-careers">
+    <h2 class="fade-up" style="text-align:center; font-size:2rem; margin-bottom:40px; color:#00bfff;">Trending Career Paths</h2>
+    <div class="career-grid">
+      <div class="career-card fade-up">
+        <img src="become-a-digital-marketing-specialist.jpg" alt="Digital Marketing Specialist">
+        <h3>Digital Marketing Specialist</h3>
+        <p>If you're into creativity and strategy, this role lets you build online campaigns and help brands connect with people.</p>
+      </div>
+      <div class="career-card fade-up">
+        <img src="young-serious-software-developer-working-front-computer-monitors.jpg" alt="Software Developer">
+        <h3>Software Developer</h3>
+        <p>Love coding and solving problems? Developers build apps and systems that power the digital world — and it’s full of opportunities.</p>
+      </div>
+      <div class="career-card fade-up">
+        <img src="freelance-graphic-design.jpeg" alt="Graphic Designer">
+        <h3>Graphic Designer</h3>
+        <p>Got a passion for visuals? Designers create content that looks amazing and communicate ideas clearly across platforms.</p>
+      </div>
     </div>
-    <div class="feature-card">
-      <div class="icon">🧠</div>
-      <h3>Personalized personality insights</h3>
-      <p>Discover what makes you unique and how it guides your future.</p>
+  </section>
+
+  <section id="success-stories" class="testimonial-section">
+    <div class="testimonial-slide visible">
+      <img src="girl-young-business-businesswoman-office-stands-1456591-pxhere.com.jpg" alt="Emily R.">
+      <blockquote>
+        <p>"Thanks to FutureLens, I discovered my passion for digital marketing and now I’m working with a top agency! The personalized guidance made all the difference."</p>
+        <footer>— Emily R.</footer>
+      </blockquote>
     </div>
-    <div class="feature-card">
-      <div class="icon">👩‍🎓</div>
-      <h3>Teen-friendly questions</h3>
-      <p>Simple, relatable prompts designed for young minds.</p>
+
+    <div class="testimonial-slide">
+      <img src="james.jpg" alt="James T.">
+      <blockquote>
+        <p>"I was unsure about my career path until I took the assessment on FutureLens. It opened my eyes to software development, and now I love what I do!"</p>
+        <footer>— James T.</footer>
+      </blockquote>
     </div>
-    <div class="feature-card">
-      <div class="icon">🎉</div>
-      <h3>Free to start</h3>
-      <p>Begin your journey without any cost or commitment.</p>
+
+    <div class="testimonial-slide">
+      <img src="has.jpg" alt="Hassan.">
+      <blockquote>
+        <p>"FutureLens helped me realize my potential as a graphic designer. The resources and mentorship were invaluable in launching my career."</p>
+        <footer>Hassan M.</footer>
+      </blockquote>
     </div>
-  </div>
-</section>
 
-
-  <section class="section" id="trending-careers">
-  <h2 class="fade-up" style="text-align:center; font-size:2rem; margin-bottom:40px; color:#00bfff;">Trending Career Paths</h2>
-  <div class="career-grid">
-    <div class="career-card fade-up">
-      <img src="become-a-digital-marketing-specialist.jpg" alt="Digital Marketing Specialist">
-      <h3>Digital Marketing Specialist</h3>
-      <p>If you're into creativity and strategy, this role lets you build online campaigns and help brands connect with people.</p>
-    </div>
-    <div class="career-card fade-up">
-      <img src="young-serious-software-developer-working-front-computer-monitors.jpg" alt="Software Developer">
-      <h3>Software Developer</h3>
-      <p>Love coding and solving problems? Developers build apps and systems that power the digital world — and it’s full of opportunities.</p>
-    </div>
-    <div class="career-card fade-up">
-      <img src="freelance-graphic-design.jpeg" alt="Graphic Designer">
-      <h3>Graphic Designer</h3>
-      <p>Got a passion for visuals? Designers create content that looks amazing and communicate ideas clearly across platforms.</p>
-    </div>
-  </div>
-</section>
-
-<section id="success-stories" class="testimonial-section">
-  <div class="testimonial-slide visible">
-    <img src="girl-young-business-businesswoman-office-stands-1456591-pxhere.com.jpg" alt="Emily R.">
-    <blockquote>
-      <p>"Thanks to FutureLens, I discovered my passion for digital marketing and now I’m working with a top agency! The personalized guidance made all the difference."</p>
-      <footer>— Emily R.</footer>
-    </blockquote>
-  </div>
-
-  <div class="testimonial-slide">
-    <img src="james.jpg" alt="James T.">
-    <blockquote>
-      <p>"I was unsure about my career path until I took the assessment on FutureLens. It opened my eyes to software development, and now I love what I do!"</p>
-      <footer>— James T.</footer>
-    </blockquote>
-  </div>
-
-  <div class="testimonial-slide">
-    <img src="has.jpg" alt="Hassan.">
-    <blockquote>
-      <p>"FutureLens helped me realize my potential as a graphic designer. The resources and mentorship were invaluable in launching my career."</p>
-      <footer>Hassan M.</footer>
-    </blockquote>
-  </div>
-
-  <!-- Navigation buttons -->
-  <button class="nav-btn left" id="prevBtn">&#10094;</button>
-  <button class="nav-btn right" id="nextBtn">&#10095;</button>
-</section>
+    <!-- Navigation buttons -->
+    <button class="nav-btn left" id="prevBtn">&#10094;</button>
+    <button class="nav-btn right" id="nextBtn">&#10095;</button>
+  </section>
 
 
 
 
-  <!-- Footer -->
-<footer id="contact">
-  <p>&copy; 2025 FutureLens. All rights reserved.</p>
-  <p>
-    <a href="#">Twitter</a> |
-    <a href="#">LinkedIn</a> |
-    <a href="#">Instagram</a>
-    <a href='https://api.whatsapp.com/send/?phone=0547727011&text&type=phone_number&app_absent=0'>Whatsapp</a>
-  </p>
-  <p>
-    <strong>Email:</strong> 
-    <a href="mailto:muhammad.rehanpro22@gmail.com">muhammad.rehanpro22@gmail.com</a> |
-    <strong>Phone:</strong> 
-    <a href="tel:+971547727011">+971 547727011 </a>
-  </p>
-</footer>
+    <!-- Footer -->
+ <footer id="contact">
+    <p>&copy; 2025 FutureLens. All rights reserved.</p>
+    <p>
+      <a href="#">Twitter</a> |
+      <a href="#">LinkedIn</a> |
+      <a href="#">Instagram</a>
+    </p>
+    <p>
+      <strong>Email:</strong> 
+      <a href="mailto:muhammad.rehanpro22@gmail.com">muhammad.rehanpro22@gmail.com</a> |
+      <strong>Phone:</strong> 
+      <a href="tel:+97154XXXXXXX">+971 54******* </a>
+    </p>
+            <div id="google_translate_element" style="display:none;"></div>
+        <button onclick="translateToArabic()">Translate to Arabic</button>
+  </footer>
 
 
-  <script>
-    const toggleBtn = document.getElementById('modeToggle');
-    const bgGradient = document.getElementById('bgGradient');
-    const bgParallax = document.getElementById('bgParallax');
+    <script>
+      const toggleBtn = document.getElementById('modeToggle');
+      const bgGradient = document.getElementById('bgGradient');
+      const bgParallax = document.getElementById('bgParallax');
 
-    // Dark/Light mode toggle
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('light-mode');
-      toggleBtn.textContent = document.body.classList.contains('light-mode') ? "Dark Mode" : "Light Mode";
+      // Dark/Light mode toggle
+      toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+        toggleBtn.textContent = document.body.classList.contains('light-mode') ? "Dark Mode" : "Light Mode";
+      });
+
+      // Cursor-reactive gradient (smooth via requestAnimationFrame)
+      let targetX = 50, targetY = 50; // percentage
+      let currentX = 50, currentY = 50;
+      const lerp = (a, b, t) => a + (b - a) * t;
+
+      document.addEventListener('mousemove', (e) => {
+        targetX = (e.clientX / window.innerWidth) * 100;
+        targetY = (e.clientY / window.innerHeight) * 100;
+      });
+
+      function animateGradient() {
+        currentX = lerp(currentX, targetX, 0.12);
+        currentY = lerp(currentY, targetY, 0.12);
+        bgGradient.style.background =
+          `radial-gradient(circle at ${currentX}% ${currentY}%, rgba(0,191,255,0.20), transparent 70%)`;
+        requestAnimationFrame(animateGradient);
+      }
+      animateGradient();
+
+      // Scroll-based parallax glow
+      let lastScrollY = 0;
+      function onScroll() {
+        const scrollY = window.scrollY || window.pageYOffset;
+        // subtle vertical parallax and mild rotation based on scroll
+        const translateY = Math.min(60, scrollY * 0.08); // px
+        const rotate = scrollY * 0.02; // deg
+        bgParallax.style.transform = `translate3d(0, ${translateY}px, 0) rotate(${rotate}deg)`;
+        // adjust intensity slightly with scroll depth
+        const intensity = Math.min(0.12 + scrollY / 3000, 0.22);
+        const isLight = document.body.classList.contains('light-mode');
+        const color = isLight ? '0,153,204' : '0,191,255';
+        bgGradient.style.background =
+          `radial-gradient(circle at ${currentX}% ${currentY}%, rgba(${color}, ${intensity}), transparent 70%)`;
+        lastScrollY = scrollY;
+      }
+      // Use passive listener for performance
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      // Resize handling to keep gradients stable
+      window.addEventListener('resize', () => {
+        // Re-center target to avoid jump on resize
+        targetX = 50; targetY = 50;
+      });
+
+      // Fade-up animation on scroll
+  const fadeUps = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  fadeUps.forEach(el => observer.observe(el));
+
+
+  (() => {
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let index = 0;
+
+    function showSlide(i) {
+      slides.forEach((s, idx) => s.classList.toggle('visible', idx === i));
+    }
+
+    prevBtn.addEventListener('click', () => {
+      index = (index - 1 + slides.length) % slides.length;
+      showSlide(index);
     });
 
-    // Cursor-reactive gradient (smooth via requestAnimationFrame)
-    let targetX = 50, targetY = 50; // percentage
-    let currentX = 50, currentY = 50;
-    const lerp = (a, b, t) => a + (b - a) * t;
-
-    document.addEventListener('mousemove', (e) => {
-      targetX = (e.clientX / window.innerWidth) * 100;
-      targetY = (e.clientY / window.innerHeight) * 100;
+    nextBtn.addEventListener('click', () => {
+      index = (index + 1) % slides.length;
+      showSlide(index);
     });
 
-    function animateGradient() {
-      currentX = lerp(currentX, targetX, 0.12);
-      currentY = lerp(currentY, targetY, 0.12);
-      bgGradient.style.background =
-        `radial-gradient(circle at ${currentX}% ${currentY}%, rgba(0,191,255,0.20), transparent 70%)`;
-      requestAnimationFrame(animateGradient);
-    }
-    animateGradient();
-
-    // Scroll-based parallax glow
-    let lastScrollY = 0;
-    function onScroll() {
-      const scrollY = window.scrollY || window.pageYOffset;
-      // subtle vertical parallax and mild rotation based on scroll
-      const translateY = Math.min(60, scrollY * 0.08); // px
-      const rotate = scrollY * 0.02; // deg
-      bgParallax.style.transform = `translate3d(0, ${translateY}px, 0) rotate(${rotate}deg)`;
-      // adjust intensity slightly with scroll depth
-      const intensity = Math.min(0.12 + scrollY / 3000, 0.22);
-      const isLight = document.body.classList.contains('light-mode');
-      const color = isLight ? '0,153,204' : '0,191,255';
-      bgGradient.style.background =
-        `radial-gradient(circle at ${currentX}% ${currentY}%, rgba(${color}, ${intensity}), transparent 70%)`;
-      lastScrollY = scrollY;
-    }
-    // Use passive listener for performance
-    window.addEventListener('scroll', onScroll, { passive: true });
-
-    // Resize handling to keep gradients stable
-    window.addEventListener('resize', () => {
-      // Re-center target to avoid jump on resize
-      targetX = 50; targetY = 50;
-    });
-
-    // Fade-up animation on scroll
-const fadeUps = document.querySelectorAll('.fade-up');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.2 });
-
-fadeUps.forEach(el => observer.observe(el));
-
-
-(() => {
-  const slides = document.querySelectorAll('.testimonial-slide');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  let index = 0;
-
-  function showSlide(i) {
-    slides.forEach((s, idx) => s.classList.toggle('visible', idx === i));
-  }
-
-  prevBtn.addEventListener('click', () => {
-    index = (index - 1 + slides.length) % slides.length;
+    // Initialize
     showSlide(index);
+  })();
+
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
   });
 
-  nextBtn.addEventListener('click', () => {
-    index = (index + 1) % slides.length;
-    showSlide(index);
-  });
-
-  // Initialize
-  showSlide(index);
-})();
-
-const menuToggle = document.getElementById('menuToggle');
-const navLinks = document.getElementById('navLinks');
-
-menuToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('show');
-});
 
 
 
 
-
-  </script>
+    </script>
 <script src="transition.js"></script>
 
-  
-</body>
-</html>
 
+
+ <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,ar',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <script>
+    let currentLang = 'en'; // start in English
+
+    function toggleTranslate() {
+      const select = document.querySelector("select.goog-te-combo");
+      if (select) {
+        // Flip language
+        currentLang = (currentLang === 'en') ? 'ar' : 'en';
+        select.value = currentLang;
+        select.dispatchEvent(new Event('change'));
+
+        // Move nav down ONLY once (when Arabic is first triggered)
+        const nav = document.querySelector("nav");
+        if (nav && currentLang === 'ar') {
+          nav.style.marginTop = '45px';
+        }
+        // When switching back to English, do NOT reset nav margin
+
+        // Keep button text always in English
+        const btn = document.getElementById("translateBtn");
+        if (btn) {
+          btn.innerText = (currentLang === 'en') ? "Translate to Arabic" : "Translate to English";
+        }
+      }
+    }
+  </script>
+
+
+
+
+
+
+  </body>
+  </html>
