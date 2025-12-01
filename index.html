@@ -282,67 +282,8 @@ body {
          transform: translateY(0);
     }
 }
-/* Responsive tweaks */
- @media (max-width: 768px) {
-     nav {
-         padding:14px 22px;
-    }
-     .hero h1 {
-         font-size:2.6rem;
-    }
-     .hero p {
-         font-size:1rem;
-    }
-     .section {
-         padding:70px 24px;
-    }
-}
-/* Mobile nav styles */
- @media (max-width: 768px) {
-     nav {
-         flex-direction: column;
-         align-items: flex-start;
-         padding: 16px 24px;
-    }
-     nav ul {
-         flex-direction: column;
-         width: 100%;
-         margin-top: 12px;
-         gap: 16px;
-    }
-     nav ul li {
-         width: 100%;
-    }
-     nav ul li a, .toggle-btn {
-         display: block;
-         width: 100%;
-         padding: 12px 0;
-         font-size: 1rem;
-    }
-}
-/* Mobile nav styles */
- @media (max-width: 768px) {
-     nav {
-         flex-direction: column;
-         align-items: flex-start;
-         padding: 16px 24px;
-    }
-     nav ul {
-         flex-direction: column;
-         width: 100%;
-         margin-top: 12px;
-         gap: 16px;
-    }
-     nav ul li {
-         width: 100%;
-    }
-     nav ul li a, .toggle-btn {
-         display: block;
-         width: 100%;
-         padding: 12px 0;
-         font-size: 1rem;
-    }
-}
+
+
  .career-grid {
      display: grid;
      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -552,68 +493,7 @@ body {
  body.light-mode .hamburger {
      color: #222;
 }
-/* Mobile styles */
- @media (max-width: 768px) {
-     nav {
-         flex-direction: column;
-         align-items: flex-start;
-         padding: 14px 20px;
-    }
-     .nav-left {
-         width: 100%;
-         justify-content: space-between;
-    }
-     .nav-links {
-         flex-direction: column;
-         width: 100%;
-         margin-top: 12px;
-         display: none;
-    }
-     .nav-links.show {
-         display: flex;
-    }
-     .nav-links li a {
-         padding: 12px 0;
-         font-size: 1rem;
-         width: 100%;
-    }
-     .hamburger {
-         display: block;
-    }
-     .nav-actions {
-         flex-direction: column;
-         align-items: flex-end;
-         width: 100%;
-         margin-top: 12px;
-         gap: 12px;
-    }
-     .toggle-btn, .join-main {
-         width: 100%;
-         padding: 12px;
-    }
-     .join-wrapper {
-         width: 100%;
-         position: relative;
-    }
-     .join-dropdown {
-         position: static;
-         flex-direction: column;
-         gap: 8px;
-         margin-top: 8px;
-         opacity: 1;
-         pointer-events: auto;
-         transform: none;
-    }
-     .join-option {
-         width: 100%;
-         padding: 12px;
-         font-size: 0.95rem;
-    }
-     .join-wrapper:hover .join-dropdown, .join-wrapper:focus-within .join-dropdown {
-         opacity: 1;
-         transform: none;
-    }
-}
+
  footer {
      padding: 30px 20px;
      text-align: center;
@@ -816,38 +696,7 @@ body {
  .join-wrapper:hover .join-dropdown {
      display: flex;
 }
-/* Mobile styles */
- @media (max-width: 768px) {
-     nav {
-         flex-direction: column;
-         align-items: flex-start;
-    }
-     .nav-links {
-         flex-direction: column;
-         width: 100%;
-         display: none;
-         margin-top: 10px;
-    }
-     .nav-links.show {
-         display: flex;
-    }
-     .hamburger {
-         display: block;
-    }
-     .nav-actions {
-         flex-direction: column;
-         align-items: flex-end;
-         width: 100%;
-         margin-top: 10px;
-    }
-     .toggle-btn, .join-main, .join-option {
-         width: 100%;
-    }
-     .join-dropdown {
-         position: static;
-         flex-direction: column;
-         margin-top: 8px;
-    }
+
 }
 /* Light Mode button */
  .toggle-btn {
@@ -864,56 +713,6 @@ body {
  .toggle-btn:hover {
      transform: scale(1.05);
      box-shadow: 0 0 10px rgba(0,191,255,0.5);
-}
-/* Mobile menu layout */
- @media (max-width: 768px) {
-     nav {
-         flex-direction: column;
-         align-items: stretch;
-    }
-     .nav-left {
-         width: 100%;
-         justify-content: space-between;
-    }
-     .nav-links {
-         flex-direction: column;
-         width: 100%;
-         display: none;
-         margin-top: 10px;
-         gap: 10px;
-    }
-     .nav-links.show {
-         display: flex;
-    }
-     .nav-links li {
-         width: 100%;
-         text-align: right;
-    }
-     .nav-links li a, .nav-links li button {
-         width: 100%;
-         padding: 12px;
-         font-size: 1rem;
-         background: none;
-         border: none;
-         color: #fff;
-         font-weight: 600;
-         text-align: right;
-    }
-     .nav-actions {
-         flex-direction: column;
-         align-items: flex-end;
-         width: 100%;
-         margin-top: 10px;
-    }
-     .toggle-btn, .join-main, .join-option {
-         width: 100%;
-    }
-     .join-dropdown {
-         position: static;
-         flex-direction: column;
-         margin-top: 8px;
-         margin-left : 10px
-    }
 }
  
 
@@ -1004,6 +803,194 @@ body.light-mode .feature-card h3 {
   display: flex;
   gap : 4%
 }
+    /* Target the wrapper */
+.gtranslate_wrapper {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	z-index: 9999;
+	font-family: 'YourSiteFont', sans-serif;
+}
+/* Customize dropdown appearance */
+.gtranslate_wrapper select {
+	background-color: #1a1a1a;
+	color: #fff;
+	border: none;
+	padding: 8px 12px;
+	border-radius: 6px;
+	box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+/* Optional: hover effect */
+.gtranslate_wrapper select:hover {
+	background-color: #333;
+}
+
+
+
+
+.rate-name{
+  font-size: larger;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-bottom: 30px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+/* =========================================================
+   MOBILE NAVIGATION STYLES
+   ========================================================= */
+/* =========================================================
+   MOBILE NAVIGATION STYLES
+   ========================================================= */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 14px 20px;
+  }
+
+  .nav-left {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    display: none;
+    margin-top: 10px;
+    gap: 10px;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: right;
+  }
+
+  .nav-links li a,
+  .nav-links li button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    background: none;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    text-align: right;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-actions {
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+    margin-top: 10px;
+    gap: 12px;
+  }
+
+  .toggle-btn,
+  .join-main,
+  .join-option {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .join-wrapper {
+    width: 100%;
+    position: relative;
+  }
+
+  .join-dropdown {
+    position: static;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+    margin-left: 10px;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+
+  .join-wrapper:hover .join-dropdown,
+  .join-wrapper:focus-within .join-dropdown {
+    opacity: 1;
+    transform: none;
+  }
+    .nav-links {
+    flex-direction: column;
+    width: 100%;
+    display: none;
+    margin-top: 10px;
+    gap: 10px;
+    align-items: center; /* Center the list items horizontally */
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: auto; /* Let items size naturally */
+    text-align: center;
+  }
+
+  .nav-links li a,
+  .nav-links li button {
+    width: auto;
+    padding: 12px;
+    font-size: 1rem;
+    background: none;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+  }
+}
+@media (max-width: 768px) {
+  .nav-actions {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .toggle-btn,
+  .join-main,
+  .join-option {
+    width: auto;
+    min-width: 140px;
+    padding: 12px;
+    text-align: center;
+  }
+
+  .join-wrapper {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    flex-wrap: wrap;
+  }
+
+  .join-dropdown {
+    position: static;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+    margin-left: 0;
+    align-items: center;
+  }
+}
+
 
   </style>
 </head>
@@ -1136,26 +1123,28 @@ body.light-mode .feature-card h3 {
 
   <section id="success-stories" class="testimonial-section">
     <div class="testimonial-slide visible">
-      <img src="girl-young-business-businesswoman-office-stands-1456591-pxhere.com.jpg" alt="Emily R.">
       <blockquote>
+        <h4 class="rate-name">Maria -M</h4>
         <p>"Thanks to FutureLens, I discovered my passion for digital marketing and now I’m working with a top agency! The personalized guidance made all the difference."</p>
-        <footer>— Emily R.</footer>
+        <footer> Rating : ⭐⭐⭐⭐⭐</footer>
       </blockquote>
     </div>
 
     <div class="testimonial-slide">
-      <img src="james.jpg" alt="James T.">
+      
       <blockquote>
+        <h4 class="rate-name">James T-</h4>
         <p>"I was unsure about my career path until I took the assessment on FutureLens. It opened my eyes to software development, and now I love what I do!"</p>
-        <footer>— James T.</footer>
+        <footer> Rating : ⭐⭐⭐⭐⭐</footer>
       </blockquote>
     </div>
 
     <div class="testimonial-slide">
-      <img src="has.jpg" alt="Hassan.">
+      
       <blockquote>
+        <h4 class="rate-name">Hassan M.</h4>
         <p>"FutureLens helped me realize my potential as a graphic designer. The resources and mentorship were invaluable in launching my career."</p>
-        <footer>Hassan M.</footer>
+        <footer> Rating  : ⭐⭐⭐⭐⭐</footer> 
       </blockquote>
     </div>
 
@@ -1294,7 +1283,7 @@ body.light-mode .feature-card h3 {
 <script src="transition.js"></script>
 
 
-
+<!-- 
  <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
@@ -1331,8 +1320,25 @@ body.light-mode .feature-card h3 {
         }
       }
     }
-  </script>
-
+  </script> -->
+<div class="gtranslate_wrapper"></div>
+<script>window.gtranslateSettings = {
+  default_language: "en",
+  native_language_names: true,
+  detect_browser_language: false, // disable auto-switching
+  languages: ["en", "fr", "it", "es", "ar", "hi", "de", "zh-CN", "ja"],
+  wrapper_selector: ".gtranslate_wrapper",
+  switcher_horizontal_position: "right",
+  switcher_vertical_position: "bottom",
+  float_switcher_open_direction: "bottom",
+  flag_style: "3d",
+  alt_flags: {
+    en: "usa",
+  
+  }
+};
+</script>
+<script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
 
 
 
@@ -1340,3 +1346,4 @@ body.light-mode .feature-card h3 {
 
   </body>
   </html>
+
